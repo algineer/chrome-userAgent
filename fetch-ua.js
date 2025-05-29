@@ -19,7 +19,7 @@ const getLatestChromeVersion = async () => {
     const page = await browser.newPage()
     let ua = await page.evaluate(() => navigator.userAgent)
 
-    ua = ua.replace(/HeadlessChrome\/\d+/, `Chrome/${getLatestChromeVersion()}`)
+    ua = ua.replace(/HeadlessChrome\/\d+/, `Chrome/${await getLatestChromeVersion()}`)
 
     // Write UA to JSON file
     fs.writeFileSync("ua.json", JSON.stringify({ userAgent: ua }, null, 2))
