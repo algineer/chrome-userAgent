@@ -17,7 +17,7 @@ const getLatestChromeVersion = async () => {
     })
 
     const page = await browser.newPage()
-    const ua = await page.evaluate(() => navigator.userAgent)
+    let ua = await page.evaluate(() => navigator.userAgent)
 
     ua = ua.replace(/HeadlessChrome\/\d+/, `Chrome/${getLatestChromeVersion()}`)
 
