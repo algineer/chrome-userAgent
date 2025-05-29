@@ -1,0 +1,12 @@
+{
+  "name": "chrome-ua-fetcher",
+  "version": "1.0.0",
+  "description": "Fetch Chrome User Agent using Puppeteer",
+  "main": "fetch-ua.js",
+  "scripts": {
+    "start": "node fetch-ua.js"
+  },
+  "dependencies": {
+    "puppeteer": "^20.9.0"
+  }
+}

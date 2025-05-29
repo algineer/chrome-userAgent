@@ -1,0 +1,36 @@
+name: Fetch Chrome User Agent
+
+on:
+    schedule:
+        - cron: "0 * * * *" # every hour; adjust as needed
+    workflow_dispatch: # manual trigger
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repo
+              uses: actions/checkout@v3
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: "18"
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Run Puppeteer to fetch UA
+              run: npm start
+
+            - name: Commit and push ua.json
+              run: |
+                  git config user.name "github-actions[bot]"
+                  git config user.email "github-actions[bot]@users.noreply.github.com"
+                  git add ua.json
+                  git commit -m "Update user agent JSON"
+                  git push
+              env:
+                  # To push to the repo, you need a GitHub token, automatically provided as GITHUB_TOKEN
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
