@@ -4,6 +4,9 @@ on:
     schedule:
         - cron: "0 * * * *" # every hour; adjust as needed
     workflow_dispatch: # manual trigger
+    
+permissions:
+  contents: write
 
 jobs:
     build:
