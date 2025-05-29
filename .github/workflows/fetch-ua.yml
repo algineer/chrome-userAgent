@@ -27,13 +27,13 @@ jobs:
             - name: Run Puppeteer to fetch UA
               run: npm start
 
-            - name: Commit and push ua.json
+            - name: Commit updated package files and ua.json
               run: |
-                  git config user.name "github-actions[bot]"
-                  git config user.email "github-actions[bot]@users.noreply.github.com"
-                  git add ua.json
-                  git commit -m "Update user agent JSON"
-                  git push
+                git config user.name "github-actions[bot]"
+                git config user.email "github-actions[bot]@users.noreply.github.com"
+                git add ua.json package.json package-lock.json
+                git commit -m "Update user agent and dependencies"
+                git push
               env:
                   # To push to the repo, you need a GitHub token, automatically provided as GITHUB_TOKEN
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
