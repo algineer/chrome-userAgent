@@ -7,6 +7,6 @@
     "start": "node fetch-ua.js"
   },
   "dependencies": {
-    "puppeteer": "^24.36.1"
+    "puppeteer": "^24.37.0"
   }
 }
